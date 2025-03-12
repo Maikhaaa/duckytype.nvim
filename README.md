@@ -1,6 +1,6 @@
 # DuckyType.nvim
 
-Like MonkeyType, but avian. 🦆
+Like MonkeyType, but Duck. 🦆
 
 In your lua configuration, add an empty setup to accept the defaults.
 
@@ -30,7 +30,7 @@ We can then override the defaults with
 
 ```lua
 require('duckytype').setup{
-  expected = "python_keywords",
+  language = "python_keywords",
   number_of_words = 42,
   average_word_length = 5.69,
 }
@@ -45,7 +45,7 @@ want to to have a Go at go keywords.
 Bind some keys to your favorite sets of keywords so you can waste your time
 more efficiently.
 
-```vim
+```lua --DEPRECATED
 require('duckytype').Start("english_common")
 require('duckytype').Start("cpp_keywords")
 require('duckytype').Start("python_keywords")

@@ -1,14 +1,20 @@
 local settings = require'duckytype.settings'
 
-local language_manager = {}
-local vocabulary = {} 
+local language = {}
+local vocabulary = {}
 
-language_manager.load_language = function(name)
-	if name ~= 'english_common' then
+local available_languages = {}
+
+language.load_language = function(name)
+	available_languages['english_common'] = true
+	available_languages['russian_common'] = true
+	available_languages['polish_common'] = true
+
+	if not available_languages[name] then
 		error('invalid language')
 	end
 
-	local this_directory = debug.getinfo(1).source:gsub('language_manager.lua', '')
+	local this_directory = debug.getinfo(1).source:gsub('language.lua', '')
 	local language_directory = this_directory:sub(2, #this_directory) .. 'languages/'
 	local path = language_directory .. name .. '.json'
 
@@ -22,21 +28,22 @@ language_manager.load_language = function(name)
 end
 
 
-language_manager.generate_challange = function()
-	local name = 'english_common'
-	local lookup_table = language_manager.load_language(name)
+language.generate_vocabulary = function()
+	local name = 'russian_common'
+	local lookup_table = language.load_language(name)
 
 	for _ = 1, settings.number_of_words do
 		local random_number = math.ceil(math.random() * #lookup_table)
 		local word = lookup_table[random_number]
 		table.insert(vocabulary, word)
 	end
-end
-
-
-language_manager.get_vocabulary = function()
 	return vocabulary
 end
 
 
-return language_manager
+language.get_vocabulary = function()
+	return vocabulary
+end
+
+
+return language

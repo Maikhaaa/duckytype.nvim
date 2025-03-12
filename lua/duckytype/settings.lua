@@ -9,7 +9,7 @@ local Defaults = {
   average_word_length = 5.8,
 
   -- centered adjusts col and row of window config when a new game starts
-  centered = false,
+  centered = true,
   window_config = {
     style = 'minimal',
     border = 'single',
