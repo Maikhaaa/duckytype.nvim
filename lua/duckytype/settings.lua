@@ -12,7 +12,7 @@ local Defaults = {
   centered = true,
   window_config = {
     style = 'minimal',
-    border = 'single',
+    border = 'double',
     relative = 'editor',
     focusable = true,
     col = 1,
@@ -22,7 +22,7 @@ local Defaults = {
   },
 
   -- link correct/incorrect/remaining to highlighting groups
-  highlight = {
+	  highlight = {
     good = "Todo",
     bad = "Error",
     remaining = "Function",

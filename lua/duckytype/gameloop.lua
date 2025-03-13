@@ -23,28 +23,28 @@ gameloop.start = function()
 	-- TODO fix the entire mess, currently the virtual text is redrawn in
 	-- full every keystroke, and things that result in a new newline are hardwired
 	-- to redraw just to not have the virtual text shuffle back and forth
-	local vocabulary = language_manager.get_vocabulary()
-	window_manager.draw(vocabulary)
-	vim.cmd('startinsert')
+	--local vocabulary = language_manager.get_vocabulary()
+	--window_manager.draw(vocabulary)
 end
 
 
 gameloop.new_game = function()
 	gameloop.change_state(States.start)
-	language_manager.generate_vocabulary()
-	local vocabulary = language_manager.get_vocabulary()
 
-	local line = string.format("%s ", table.concat(vocabulary, " "))
-	table.insert(vocabulary, line)
+	--language_manager.generate_vocabulary()
+	--local vocabulary = language_manager.get_vocabulary()
 
-	local empty = { "", "", "" }
-	for _, _ in ipairs(vocabulary) do
-		table.insert(empty, "")
-	end
+	--local line = string.format("%s ", table.concat(vocabulary, " "))
+	--table.insert(vocabulary, line)
+
+	--local empty = { "", "", "" }
+	--for _, _ in ipairs(vocabulary) do
+	--	table.insert(empty, "")
+	--end
 
 	-- TODO proper timing, starts on first keystroke instead of when window shows
-	start_time = os.time()
-	finish_time = nil
+	--start_time = os.time()
+	--finish_time = nil
 end
 
 
@@ -70,7 +70,7 @@ gameloop.summarize = function()
 	methods.HighlightLine(#expected + 1, ":: ", m2)
 	-- TODO this is probably sensitive to user-defined keybindings?
 	vim.api.nvim_input("<Esc>jj")
-	window_manager.draw()
+	-- window_manager.draw()
 end
 
 
